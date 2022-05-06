@@ -1,0 +1,137 @@
+@import "../style/variable.scss";
+
+header {
+  position: fixed;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 2;
+  width: 100%;
+}
+
+.navbar {
+  nav {
+    position: relative;
+    display: flex;
+    max-width: calc(100% - 20px);
+    height: 70px;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (min-width: $breakpoint-desktop) {
+      justify-content: space-around;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    .menu-icon {
+      display: block;
+      font-size: 20px;
+      cursor: pointer;
+      @media (min-width: $breakpoint-desktop-small) {
+        display: none;
+      }
+    }
+    .content {
+      position: absolute;
+      align-items: center;
+
+      @media (min-width: $breakpoint-desktop-small) {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        width: 40%;
+      }
+
+      .link {
+        list-style-type: none;
+        display: block;
+        position: fixed;
+        background-color: aquamarine;
+        height: auto;
+        width: 100%;
+        top: 70px;
+        left: 100%;
+        margin-left: 0;
+        max-width: 140px;
+        overflow-y: auto;
+        transition: all 0.3s ease;
+
+        &-item {
+          position: relative;
+          line-height: 50px;
+
+          a {
+            color: #b2b2b2;
+            font-size: 16px;
+          }
+
+          @media (min-width: $breakpoint-desktop-small) {
+            &:after {
+              content: '';
+              position: absolute;
+              width: 100%;
+              transform: scaleX(0);
+              height: 4px;
+              bottom: 0;
+              left: 0;
+              top: 38px;
+              background: linear-gradient(to right, rgb(108, 211, 157), rgb(108, 211, 226));
+              transform-origin: bottom right;
+              transition: transform 0.25s ease-out;
+            }
+            &:hover:after{
+              transform: scaleX(1);
+              transform-origin: bottom left;
+            }
+          }
+        }
+
+        @media (min-width: $breakpoint-desktop-small) {
+          position: relative;
+          display: flex;
+          top: auto;
+          left: auto;
+          max-width: 400px;
+          flex-direction: row;
+          justify-content: space-around;
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
+
+  #show-menu:checked ~ .menu-icon i::before {
+    content: "\f00d";
+  }
+
+  #show-menu:checked ~ .content .link {
+    left: 6%;
+    text-align: center;
+    max-width: 300px;
+    border-radius: 20px;
+    box-shadow: 0px 20px 20px 14px #b2b2b2;
+  }
+}
+
+.btn {
+  display: none;
+  @media (min-width: $breakpoint-desktop-small) {
+    display: block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(to right, rgb(49, 207, 112), rgb(43, 185, 205));
+
+    &:hover {
+      background: linear-gradient(
+        to right,
+        rgb(108, 211, 157),
+        rgb(108, 211, 226)
+      );
+    }
+  }
+}

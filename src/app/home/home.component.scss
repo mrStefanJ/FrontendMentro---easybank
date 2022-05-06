@@ -22,11 +22,6 @@
       overflow: hidden;
     }
 
-    // @media (min-width: $breakpoint-desktop) {
-    //  flex-direction: row;
-    //  align-items: center;
-    //  overflow: hidden;
-    // }
     .image-mobApp {
       position: relative;
       height: 500px;
@@ -51,14 +46,16 @@
       text-align: center;
       order: 2;
 
+      @media (min-width: $breakpoint-tablet) {
+        margin-bottom: 20px;
+      }
+
       @media (min-width: $breakpoint-desktop-small) {
         order: 1;
         text-align: left;
-      }
-      @media (min-width: $breakpoint-desktop-small) {
-        
         margin-left: 70px;
         width: 400px;
+        margin-bottom: 0;
       }
 
       &-title{
@@ -177,6 +174,10 @@
         &-title {
           font-size: 18px;
           font-weight: bold;
+          &:hover{
+            color: rgb(49, 207, 112);
+            cursor: pointer;
+          }
         }
         &-text {
           font-size: 16px;
